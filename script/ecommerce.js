@@ -1,4 +1,5 @@
 import { products } from "../data/products.js";
+import { addToCart } from "../data/cart.js";
 import { moneyFormat } from "./utils/money.js";
 
 function renderProducts() {
@@ -20,13 +21,22 @@ function renderProducts() {
         </div>
       </div>
 
-      <button class="add-to-cart">
+      <button class="add-to-cart js-add-to-cart" data-product-id="${
+        product.id
+      }">
         Add to cart
       </button>
     </div>`;
   });
 
   document.querySelector(".js-products-container").innerHTML = html;
+
+  document.querySelectorAll(".js-add-to-cart").forEach((button) => {
+    button.addEventListener("click", () => {
+      const { productId } = button.dataset;
+      addToCart(productId);
+    });
+  });
 }
 
 renderProducts();
