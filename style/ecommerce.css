@@ -135,10 +135,6 @@ section{
   background: none;
 }
 
-.ri-heart-fill{
-  color: red;
-}
-
 @media screen and (max-width: 1024px) {
   .heros{
     grid-template-columns: 1fr;

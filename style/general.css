@@ -25,3 +25,7 @@ button{
   margin-inline: auto;
   padding-inline: 1rem;
 }
+
+.ri-heart-fill{
+  color: red;
+}
