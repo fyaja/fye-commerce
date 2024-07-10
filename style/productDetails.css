@@ -1,0 +1,117 @@
+/* product details */
+.product-details{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.product-details-top{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.product-details-top a{
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 2px;
+  color: var(--secondary-color);
+}
+
+.product-details-top a:hover{
+  text-decoration: underline;
+}
+
+.product-details-top span{
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.product-details-container{
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 2rem;
+}
+
+.product-details-container .product-details-left{
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: var(--third-color);
+}
+
+.product-details-left img{
+  border-radius: 1rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.product-details-right{
+  display: flex;
+  align-items: flex-start;
+}
+
+.product-details-right .product-details-right-desc{
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--secondary-color);
+}
+
+.product-details-right-desc .product-details-name{
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.product-details-right-desc .product-details-price{
+  font-size: 1.5rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.product-details-right-desc .product-details-desc{
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.add-to-cart{
+  margin-top: 1rem;
+  border: none;
+  font-size: 1rem;
+  padding: 0.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  border-radius: 0.5rem;
+}
+
+.quantity-buttons{
+  display: flex;
+  gap: 0.5rem;
+}
+
+.quantity-buttons input{
+  border: 1px solid var(--secondary-color);
+  font-size: 1rem;
+  padding: 0.5em;
+  max-width: 40px;
+}
+
+.quantity-buttons input:focus{
+  outline: none;
+}
+
+.quantity-buttons .quantity-button{
+  border: none;
+  padding: 0.5em;
+  color: var(--secondary-color);
+  background-color: var(--third-color);
+}
+
+.add-to-wishlist{
+  border: none;
+  background: none;
+}

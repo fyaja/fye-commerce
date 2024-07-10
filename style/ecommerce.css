@@ -135,15 +135,6 @@ section{
   background: none;
 }
 
-.add-to-cart{
-  font-weight: 600;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  color: var(--primary-color);
-  background-color: var(--secondary-color);
-}
-
 @media screen and (max-width: 1024px) {
   .heros{
     grid-template-columns: 1fr;
