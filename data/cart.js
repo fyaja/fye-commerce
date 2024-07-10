@@ -1,7 +1,7 @@
 const cart = [];
 
 export function addToCart(productId, quantity) {
-  if(quantity === 0) return;
+  if (quantity === 0) return;
 
   let sameItem;
   cart.forEach((cartItem) => {
@@ -20,4 +20,12 @@ export function addToCart(productId, quantity) {
   }
 
   console.log(cart);
+}
+
+export function updateCartQuantity() {
+  let totalQuantity = 0;
+  cart.forEach((cartItem) => {
+    totalQuantity += cartItem.quantity;
+  });
+  document.querySelector(".cart-quantity").innerHTML = totalQuantity;
 }

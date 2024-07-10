@@ -1,3 +1,4 @@
+import { updateCartQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { moneyFormat } from "./utils/money.js";
 
@@ -26,6 +27,7 @@ function renderProducts() {
   });
 
   document.querySelector(".js-products-container").innerHTML = html;
+  updateCartQuantity();
 }
 
 renderProducts();
