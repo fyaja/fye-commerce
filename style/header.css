@@ -68,3 +68,18 @@ header{
 .header-right .search-div input::placeholder{
   color: var(--secondary-color);
 }
+
+@media screen and (max-width: 568px) {
+  .header-container{
+    flex-direction: column;
+    align-items: normal;
+  }
+
+  .logo{
+    align-self: center;
+  }
+
+  .header-right .search-div{
+    margin-left: 0;
+  }
+}
