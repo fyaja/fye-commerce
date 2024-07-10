@@ -1,0 +1,70 @@
+/* header */
+header{
+  background-color: var(--secondary-color);
+  padding-block: 1rem;
+}
+
+.header-container{
+  display: flex;
+  align-items: center;
+}
+
+.header-right{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  gap: 1rem;
+  margin-right: 10px;
+}
+
+.header-right a{
+  color: var(--primary-color);
+  text-decoration: none;
+  position: relative;
+}
+
+.header-right a div{
+  top: -8px;
+  right: -10px;
+  font-size: 8px;
+  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 10px;
+  border: 2px solid black;
+  position: absolute;
+  color: var(--secondary-color);
+  background-color: var(--third-color);
+}
+
+.header-right .search-div{
+  flex: 1;
+  display: flex;
+  margin-left: 1rem;
+  max-width: 400px;
+  position: relative;
+}
+
+.header-right .search-div i{
+  right: 10px;
+  top: 3px;
+  position: absolute;
+  color: var(--secondary-color);
+}
+
+.header-right .search-div input{
+  width: 0;
+  flex: 1;
+  border: none;
+  font-size: 0.875rem;
+  border-radius: 20px;
+  padding: 0.2rem 2rem 0.2rem 1rem;
+}
+
+.header-right .search-div input:focus{
+  outline: none;
+}
+
+.header-right .search-div input::placeholder{
+  color: var(--secondary-color);
+}
