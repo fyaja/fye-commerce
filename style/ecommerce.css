@@ -100,8 +100,8 @@ section{
 
 .product .product-item{
   display: flex;
-  gap: 2rem;
   align-items: flex-start;
+  justify-content: space-between;
 }
 
 .product-item a{
