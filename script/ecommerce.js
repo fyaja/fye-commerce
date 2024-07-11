@@ -1,11 +1,15 @@
-import { updateCartQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { moneyFormat } from "./utils/money.js";
-import { updateHeartIcon, updateHeartIcons } from "./utils/heartIcon.js";
+import {
+  updateHeartIcon,
+  updateHeartIconsEcommerce,
+} from "./utils/heartIcon.js";
 import { addToWishlist } from "../data/wishlist.js";
+import { renderHeader } from "./header.js";
 
 function renderProducts() {
   let html = "";
+  let productId;
   products.forEach((product) => {
     html += `
     <div class="product">
@@ -28,6 +32,7 @@ function renderProducts() {
         </button>
       </div>
     </div>`;
+    productId = product.id;
   });
 
   document.querySelector(".js-products-container").innerHTML = html;
@@ -36,10 +41,11 @@ function renderProducts() {
       const { productId } = button.dataset;
       addToWishlist(productId);
       updateHeartIcon(productId);
+      renderHeader();
     });
   });
-  updateHeartIcons();
-  updateCartQuantity();
+  updateHeartIconsEcommerce();
+  renderHeader();
 }
 
 renderProducts();

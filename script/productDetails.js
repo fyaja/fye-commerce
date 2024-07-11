@@ -1,8 +1,12 @@
 import { products } from "../data/products.js";
-import { addToCart, updateCartQuantity } from "../data/cart.js";
+import { addToCart } from "../data/cart.js";
 import { moneyFormat } from "./utils/money.js";
-import { updateHeartIcon, updateHeartIcons } from "./utils/heartIcon.js";
+import {
+  updateHeartIcon,
+  updateHeartIconsProductDetails,
+} from "./utils/heartIcon.js";
 import { addToWishlist } from "../data/wishlist.js";
+import { renderHeader } from "./header.js";
 
 function renderProductDetails() {
   const url = new URL(window.location.href);
@@ -64,8 +68,7 @@ function renderProductDetails() {
 
   document.querySelector(".product-details-top span").innerText = productName;
   document.querySelector(".js-products-details-container").innerHTML = html;
-
-  updateCartQuantity();
+  renderHeader();
 
   const quantityInput = document.querySelector("#quantityInput");
 
@@ -88,9 +91,10 @@ function renderProductDetails() {
       const { productId } = button.dataset;
       addToWishlist(productId);
       updateHeartIcon(productId);
+      renderHeader();
     });
   });
-  updateHeartIcons();
+  updateHeartIconsProductDetails(productId);
 
   document
     .querySelectorAll(".product-button-bottom button")
@@ -126,7 +130,7 @@ function renderProductDetails() {
 
   document.querySelector(".js-add-to-cart").addEventListener("click", () => {
     addToCart(productId, Number(quantityInput.value), productSize || "M");
-    updateCartQuantity();
+    renderHeader();
   });
 }
 

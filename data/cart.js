@@ -28,5 +28,5 @@ export function updateCartQuantity() {
   cart.forEach((cartItem) => {
     totalQuantity += cartItem.quantity;
   });
-  document.querySelector(".cart-quantity").innerHTML = totalQuantity;
+  return totalQuantity;
 }

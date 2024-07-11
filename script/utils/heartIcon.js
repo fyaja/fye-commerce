@@ -18,7 +18,20 @@ export function updateHeartIcon(productId) {
   }
 }
 
-export function updateHeartIcons() {
+export function updateHeartIconsProductDetails(productId) {
+  wishlist.forEach((item) => {
+    if (item.productId === productId) {
+      const heartElement = document.querySelector(
+        `.add-to-wishlist-${item.productId} i`
+      );
+      heartElement.classList.remove("ri-heart-line");
+      heartElement.classList.add("ri-heart-fill");
+    }
+  });
+  console.log(wishlist);
+}
+
+export function updateHeartIconsEcommerce() {
   wishlist.forEach((item) => {
     if (item.productId) {
       const heartElement = document.querySelector(
@@ -28,4 +41,5 @@ export function updateHeartIcons() {
       heartElement.classList.add("ri-heart-fill");
     }
   });
+  console.log(wishlist);
 }
