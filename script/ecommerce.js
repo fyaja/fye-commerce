@@ -1,7 +1,8 @@
 import { updateCartQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { moneyFormat } from "./utils/money.js";
-import { addToWishlist, wishlist } from "../data/wishlist.js";
+import { updateHeartIcon, updateHeartIcons } from "./utils/heartIcon.js";
+import { addToWishlist } from "../data/wishlist.js";
 
 function renderProducts() {
   let html = "";
@@ -42,33 +43,3 @@ function renderProducts() {
 }
 
 renderProducts();
-
-function updateHeartIcon(productId) {
-  const heartElement = document.querySelector(
-    `.add-to-wishlist-${productId} i`
-  );
-
-  const isProductInWishlist = wishlist.some(
-    (item) => item.productId === productId
-  );
-
-  if (!isProductInWishlist) {
-    heartElement.classList.remove("ri-heart-fill");
-    heartElement.classList.add("ri-heart-line");
-  } else {
-    heartElement.classList.remove("ri-heart-line");
-    heartElement.classList.add("ri-heart-fill");
-  }
-}
-
-function updateHeartIcons() {
-  wishlist.forEach((item) => {
-    if (item.productId) {
-      const heartElement = document.querySelector(
-        `.add-to-wishlist-${item.productId} i`
-      );
-      heartElement.classList.remove("ri-heart-line");
-      heartElement.classList.add("ri-heart-fill");
-    }
-  });
-}
