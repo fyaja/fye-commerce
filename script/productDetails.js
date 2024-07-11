@@ -8,6 +8,7 @@ function renderProductDetails() {
   const productId = url.searchParams.get("productId");
 
   let html = "";
+  let productName;
   products.forEach((product) => {
     if (product.id == productId) {
       html = `
@@ -16,19 +17,15 @@ function renderProductDetails() {
       </div>
 
       <div class="product-details-right">
-        <div class="product-container">
-          <div class="product-info">
+        <div class="product-details-content">
+          <div class="product-details-info">
             <h2 class="product-details-name">${product.name}</h2>
+            <p class="product-details-description">${product.desc}</p>
             <p class="product-details-price">${moneyFormat(product.price)}</p>
-            <p class="product-details-desc">${product.desc}</p>
-            <div class="quantity-controls">
-              <button class="quantity-button" id="subtractButton">
-                <i class="ri-subtract-fill ri-lg"></i>
-              </button>
-              <input type="number" id="quantityInput" class="quantity-input" value="1" min="1">
-              <button class="quantity-button" id="addButton">
-                <i class="ri-add-fill ri-lg"></i>
-              </button>
+            <div class="product-size-options">
+              <button>M</button>
+              <button>L</button>
+              <button>XL</button>
             </div>
           </div>
           <button class="add-to-wishlist add-to-wishlist-${
@@ -37,14 +34,36 @@ function renderProductDetails() {
             <i class="ri-heart-line ri-xl"></i>
           </button>
         </div>
-        <button class="add-to-cart js-add-to-cart">Add to cart</button>
+
+        <div class="product-button">
+          <div class="quantity-controls">
+            <button class="quantity-button" id="subtractButton">
+              <i class="ri-subtract-fill ri-lg"></i>
+            </button>
+            <input type="number" id="quantityInput" class="quantity-input" value="1" min="1">
+            <button class="quantity-button" id="addButton">
+              <i class="ri-add-fill ri-lg"></i>
+            </button>
+          </div>
+          <button class="add-to-cart js-add-to-cart">Add to cart</button>
+          <div class="product-button-bottom">
+            <button class="product-image selected" data-product-image="${
+              product.image
+            }">
+              <img src="${product.image}" alt="${product.name}">
+            </button>
+            <button class="size-chart-image" data-product-image="./images/size-chart.jpg">
+              <img src="./images/size-chart.jpg" alt="size-chart">
+            </button>
+          </div>
       </div>`;
-      document.querySelector(".product-details-top span").innerText =
-        product.name;
+      productName = product.name;
     }
   });
 
+  document.querySelector(".product-details-top span").innerText = productName;
   document.querySelector(".js-products-details-container").innerHTML = html;
+
   updateCartQuantity();
 
   const quantityInput = document.querySelector("#quantityInput");
@@ -68,10 +87,12 @@ function renderProductDetails() {
     updateCartQuantity();
   });
 
-  document.querySelector(".add-to-wishlist").addEventListener("click", () => {
-    const { productId } = document.querySelector(".add-to-wishlist").dataset;
-    addToWishlist(productId);
-    updateHeartIcon(productId);
+  document.querySelectorAll(".add-to-wishlist").forEach((button) => {
+    button.addEventListener("click", () => {
+      const { productId } = button.dataset;
+      addToWishlist(productId);
+      updateHeartIcon(productId);
+    });
   });
   updateHeartIcons();
 }
