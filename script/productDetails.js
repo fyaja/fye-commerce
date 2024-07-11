@@ -95,9 +95,33 @@ function renderProductDetails() {
     });
   });
   updateHeartIcons();
+
+  document
+    .querySelectorAll(".product-button-bottom button")
+    .forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!button.classList.contains("selected")) {
+          turnOffPreviousButton();
+          button.classList.add("selected");
+          const { productImage } = button.dataset;
+          document
+            .querySelector(".product-details-left img")
+            .setAttribute("src", productImage);
+        } else {
+          button.classList.remove("selected");
+        }
+      });
+    });
 }
 
 renderProductDetails();
+
+function turnOffPreviousButton() {
+  const previousButton = document.querySelector(".selected");
+  if (previousButton) {
+    previousButton.classList.remove("selected");
+  }
+}
 
 function updateHeartIcon(productId) {
   const heartElement = document.querySelector(
