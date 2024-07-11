@@ -23,9 +23,9 @@ function renderProductDetails() {
             <p class="product-details-description">${product.desc}</p>
             <p class="product-details-price">${moneyFormat(product.price)}</p>
             <div class="product-size-options">
-              <button>M</button>
-              <button>L</button>
-              <button>XL</button>
+              <button class="up-selected" data-product-size="M">M</button>
+              <button data-product-size="L">L</button>
+              <button data-product-size="XL">XL</button>
             </div>
           </div>
           <button class="add-to-wishlist add-to-wishlist-${
@@ -82,11 +82,6 @@ function renderProductDetails() {
     quantityInput.value = inputValue;
   });
 
-  document.querySelector(".js-add-to-cart").addEventListener("click", () => {
-    addToCart(productId, Number(quantityInput.value));
-    updateCartQuantity();
-  });
-
   document.querySelectorAll(".add-to-wishlist").forEach((button) => {
     button.addEventListener("click", () => {
       const { productId } = button.dataset;
@@ -101,27 +96,40 @@ function renderProductDetails() {
     .forEach((button) => {
       button.addEventListener("click", () => {
         if (!button.classList.contains("selected")) {
-          turnOffPreviousButton();
+          const previousButton = document.querySelector(".selected");
+          previousButton.classList.remove("selected");
+
           button.classList.add("selected");
           const { productImage } = button.dataset;
           document
             .querySelector(".product-details-left img")
             .setAttribute("src", productImage);
-        } else {
-          button.classList.remove("selected");
         }
       });
     });
+
+  let productSize = "";
+  document
+    .querySelectorAll(".product-size-options button")
+    .forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!button.classList.contains("up-selected")) {
+          const previousButton = document.querySelector(".up-selected");
+          previousButton.classList.remove("up-selected");
+
+          button.classList.add("up-selected");
+          productSize = button.dataset.productSize;
+        }
+      });
+    });
+
+  document.querySelector(".js-add-to-cart").addEventListener("click", () => {
+    addToCart(productId, Number(quantityInput.value), productSize || "M");
+    updateCartQuantity();
+  });
 }
 
 renderProductDetails();
-
-function turnOffPreviousButton() {
-  const previousButton = document.querySelector(".selected");
-  if (previousButton) {
-    previousButton.classList.remove("selected");
-  }
-}
 
 function updateHeartIcon(productId) {
   const heartElement = document.querySelector(

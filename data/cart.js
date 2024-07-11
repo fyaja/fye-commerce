@@ -1,11 +1,11 @@
 const cart = [];
 
-export function addToCart(productId, quantity) {
+export function addToCart(productId, quantity, size) {
   if (quantity === 0) return;
 
   let sameItem;
   cart.forEach((cartItem) => {
-    if (cartItem.productId === productId) {
+    if (cartItem.productId === productId && cartItem.size === size) {
       sameItem = cartItem;
     }
   });
@@ -16,6 +16,7 @@ export function addToCart(productId, quantity) {
     cart.push({
       productId: productId,
       quantity: quantity,
+      size: size,
     });
   }
 
