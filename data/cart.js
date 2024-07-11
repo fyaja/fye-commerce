@@ -1,4 +1,4 @@
-const cart = [];
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 export function addToCart(productId, quantity, size) {
   if (quantity === 0) return;
@@ -21,6 +21,7 @@ export function addToCart(productId, quantity, size) {
   }
 
   console.log(cart);
+  saveToStorage();
 }
 
 export function updateCartQuantity() {
@@ -29,4 +30,8 @@ export function updateCartQuantity() {
     totalQuantity += cartItem.quantity;
   });
   return totalQuantity;
+}
+
+function saveToStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
