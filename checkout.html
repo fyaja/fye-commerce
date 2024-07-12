@@ -28,6 +28,7 @@
         <i class="ri-arrow-right-s-line ri-lg"></i>
         <span>My Cart</span>
       </div>
+
       <div class="checkout-container js-checkout-container">
         <div class="order-container">
           <div class="order">
@@ -39,27 +40,44 @@
                   <p class="order-item-price">Rp. 150.000</p>
                   <p>Size: M</p>
                 </div>
-                <div class="control-buttons">
-                  <div class="quantity-controls">
-                    <button class="quantity-button" id="subtractButton">
-                      <i class="ri-subtract-fill ri-lg"></i>
-                    </button>
-                    <input type="number" id="quantityInput" class="quantity-input" value="1" min="1">
-                    <button class="quantity-button" id="addButton">
-                      <i class="ri-add-fill ri-lg"></i>
-                    </button>
-                  </div>
-                  <button class="remove-product">
-                    <i class="ri-delete-bin-5-line ri-xl"></i>
-                    <span>Remove item</span>
+                <div class="quantity-controls">
+                  <button class="quantity-button" id="subtractButton">
+                    <i class="ri-subtract-fill ri-lg"></i>
+                  </button>
+                  <input type="number" id="quantityInput" class="quantity-input" value="1" min="1">
+                  <button class="quantity-button" id="addButton">
+                    <i class="ri-add-fill ri-lg"></i>
                   </button>
                 </div>
               </div>
             </div>
-            <button class="add-to-wishlist">
-              <i class="ri-heart-line ri-xl"></i>
-            </button>
+            <div class="order-right-buttons">
+              <button class="add-to-wishlist">
+                <i class="ri-heart-line ri-xl"></i>
+              </button>
+              <button class="remove-product">
+                <i class="ri-delete-bin-5-line ri-xl"></i>
+                <span>Remove item</span>
+              </button>
+            </div>
           </div>
+        </div>
+
+        <div class="order-summary">
+          <h2>Order Summary</h2>
+          <div class="price-div">
+            <p class="text">Subtotal</p>
+            <p class="price">Rp. 150.000</p>
+          </div>
+          <div class="price-div">
+            <p class="text">Tax (10%)</p>
+            <p class="price">Rp. 150.000</p>
+          </div>
+          <div class="price-div">
+            <p class="text">Total</p>
+            <p class="price">Rp. 150.000</p>
+          </div>
+          <button class="checkout-btn">Checkout</button>
         </div>
       </div>
     </section>
