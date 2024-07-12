@@ -7,6 +7,7 @@ import {
 } from "./utils/heartIcon.js";
 import { addToWishlist } from "../data/wishlist.js";
 import { renderHeader } from "./header.js";
+import { pushSize } from "./utils/sizeChart.js";
 
 function renderProductDetails() {
   const url = new URL(window.location.href);
@@ -112,7 +113,7 @@ function renderProductDetails() {
       });
     });
 
-  let productSize = "";
+  let productSize = "M";
   document
     .querySelectorAll(".product-size-options button")
     .forEach((button) => {
@@ -123,12 +124,13 @@ function renderProductDetails() {
 
           button.classList.add("up-selected");
           productSize = button.dataset.productSize;
+          pushSize(productId, productSize);
         }
       });
     });
 
   document.querySelector(".js-add-to-cart").addEventListener("click", () => {
-    addToCart(productId, quantityInput.value, productSize || "M");
+    addToCart(productId, quantityInput.value, productSize);
     renderHeader();
   });
 }

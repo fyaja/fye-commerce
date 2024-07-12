@@ -6,10 +6,10 @@ import {
 } from "./utils/heartIcon.js";
 import { addToWishlist } from "../data/wishlist.js";
 import { renderHeader } from "./header.js";
+import { removeProductsSize } from "./utils/sizeChart.js";
 
 function renderProducts() {
   let html = "";
-  let productId;
   products.forEach((product) => {
     html += `
     <div class="product">
@@ -32,7 +32,6 @@ function renderProducts() {
         </button>
       </div>
     </div>`;
-    productId = product.id;
   });
 
   document.querySelector(".js-products-container").innerHTML = html;
@@ -47,5 +46,6 @@ function renderProducts() {
   updateHeartIconsEcommerce();
 }
 
+removeProductsSize();
 renderProducts();
 renderHeader();

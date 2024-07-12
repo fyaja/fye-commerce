@@ -2,6 +2,7 @@ import { addToCart } from "../data/cart.js";
 import { getProducts } from "../data/products.js";
 import { wishlist } from "../data/wishlist.js";
 import { renderHeader } from "./header.js";
+import { getSize, removeProductsSize } from "./utils/sizeChart.js";
 
 function renderWishlistProduct() {
   let html = ``;
@@ -25,6 +26,13 @@ function renderWishlistProduct() {
   document.querySelectorAll(".add-to-cart").forEach((button) => {
     button.addEventListener("click", () => {
       const { productId } = button.dataset;
+      addToCart(
+        productId,
+        1,
+        getSize(productId) ? getSize(productId).size : "M"
+      );
+      removeProductsSize();
+      renderHeader();
     });
   });
 }
