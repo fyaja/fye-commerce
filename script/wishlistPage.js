@@ -3,6 +3,7 @@ import { getProducts } from "../data/products.js";
 import { wishlist } from "../data/wishlist.js";
 import { renderHeader } from "./header.js";
 import { getSize, removeProductsSize } from "./utils/sizeChart.js";
+import { moneyFormat } from "./utils/money.js";
 
 function renderWishlistProduct() {
   let html = ``;
@@ -15,10 +16,12 @@ function renderWishlistProduct() {
         <div class="wishlist-product-top">
           <img src="${product.image}" alt="${product.name}">
           <h2 class="wishlist-name">${product.name}</h2>
-          <p class="wishlist-desc">${product.desc}</p>
+          <p>${moneyFormat(product.price)}</p>
         </div>
       </a>
-      <button class="add-to-cart" data-product-id="${product.id}">Add to cart</button>
+      <button class="add-to-cart" data-product-id="${
+        product.id
+      }">Add to cart</button>
     </div>`;
   });
 

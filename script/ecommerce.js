@@ -21,7 +21,6 @@ function renderProducts() {
           <div class="product-desc-item">
             <h3 class="product-name">${product.name}</h3>
             <p class="product-price">${moneyFormat(product.price)}</p>
-            <p class="product-desc">${product.desc}</p>
           </div>
         </a>
 

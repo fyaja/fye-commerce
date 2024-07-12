@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- icon -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <!-- css -->
+  <link rel="stylesheet" href="style/general.css">
+  <link rel="stylesheet" href="style/header.css">
+  <link rel="stylesheet" href="style/checkout.css">
+  <title>fyecommerce</title>
+</head>
+
+<body>
+  <header></header>
+
+  <main>
+    <section class="checkout container">
+      <div class="checkout-top">
+        <a href="ecommerce.html">Home Page</a>
+        <i class="ri-arrow-right-s-line ri-lg"></i>
+        <span>My Cart</span>
+      </div>
+      <div class="checkout-container js-checkout-container">
+        <div class="order-container">
+          <div class="order">
+            <div class="order-info">
+              <img src="images/products-image/kaos item.jpg" alt="kaos">
+              <div class="order-item">
+                <div class="order-item-top">
+                  <h2 class="order-item-name">Black T-shirt</h2>
+                  <p class="order-item-price">Rp. 150.000</p>
+                  <p>Size: M</p>
+                </div>
+                <div class="control-buttons">
+                  <div class="quantity-controls">
+                    <button class="quantity-button" id="subtractButton">
+                      <i class="ri-subtract-fill ri-lg"></i>
+                    </button>
+                    <input type="number" id="quantityInput" class="quantity-input" value="1" min="1">
+                    <button class="quantity-button" id="addButton">
+                      <i class="ri-add-fill ri-lg"></i>
+                    </button>
+                  </div>
+                  <button class="remove-product">
+                    <i class="ri-delete-bin-5-line ri-xl"></i>
+                    <span>Remove item</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <button class="add-to-wishlist">
+              <i class="ri-heart-line ri-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="script/checkout.js"></script>
+</body>
+
+</html>
