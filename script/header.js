@@ -12,11 +12,11 @@ export function renderHeader() {
         <i class="ri-search-line"></i>
         <input class="search-input" type="text" placeholder="search here..">
       </div>
-      <a href="#" class="products-cart">
+      <a href="../cart.html" class="products-cart">
         <div class="cart-quantity">${updateCartQuantity()}</div>
         <i class="ri-shopping-bag-line ri-lg"></i>
       </a>
-      <a href="#" class="products-wishlist">
+      <a href="../wishlist.html" class="products-wishlist">
         <div class="wishlist-quantity">${wishlist.length}</div>
         <i class="ri-heart-line ri-lg"></i>
       </a>

@@ -28,3 +28,13 @@ export const products = [
     desc: "ya kaos item aja sih tapi bagus loh..",
   },
 ];
+
+export function getProducts(productId) {
+  let sameProduct;
+  products.forEach((product) => {
+    if (product.id === productId) {
+      sameProduct = product;
+    }
+  });
+  return sameProduct;
+}

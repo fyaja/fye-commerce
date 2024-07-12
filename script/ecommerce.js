@@ -45,7 +45,7 @@ function renderProducts() {
     });
   });
   updateHeartIconsEcommerce();
-  renderHeader();
 }
 
 renderProducts();
+renderHeader();

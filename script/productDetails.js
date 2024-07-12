@@ -68,7 +68,6 @@ function renderProductDetails() {
 
   document.querySelector(".product-details-top span").innerText = productName;
   document.querySelector(".js-products-details-container").innerHTML = html;
-  renderHeader();
 
   const quantityInput = document.querySelector("#quantityInput");
 
@@ -135,3 +134,4 @@ function renderProductDetails() {
 }
 
 renderProductDetails();
+renderHeader();
