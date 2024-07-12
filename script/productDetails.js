@@ -128,7 +128,7 @@ function renderProductDetails() {
     });
 
   document.querySelector(".js-add-to-cart").addEventListener("click", () => {
-    addToCart(productId, Number(quantityInput.value), productSize || "M");
+    addToCart(productId, quantityInput.value, productSize || "M");
     renderHeader();
   });
 }

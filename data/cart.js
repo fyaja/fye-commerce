@@ -1,7 +1,8 @@
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 export function addToCart(productId, quantity, size) {
-  if (quantity === 0) return;
+  const quantityNumber = Number(quantity);
+  if (quantityNumber === 0) return;
 
   let sameItem;
   cart.forEach((cartItem) => {
@@ -11,11 +12,11 @@ export function addToCart(productId, quantity, size) {
   });
 
   if (sameItem) {
-    sameItem.quantity += quantity;
+    sameItem.quantity += quantityNumber;
   } else {
     cart.push({
       productId: productId,
-      quantity: quantity,
+      quantity: quantityNumber,
       size: size,
     });
   }

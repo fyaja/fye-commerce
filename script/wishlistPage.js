@@ -1,3 +1,4 @@
+import { addToCart } from "../data/cart.js";
 import { getProducts } from "../data/products.js";
 import { wishlist } from "../data/wishlist.js";
 import { renderHeader } from "./header.js";
@@ -6,7 +7,7 @@ function renderWishlistProduct() {
   let html = ``;
 
   wishlist.forEach((wishlistProduct) => {
-    const product = getProducts(Number(wishlistProduct.productId));
+    const product = getProducts(wishlistProduct.productId);
     html += `
     <div class="wishlist-product">
       <a href='productdetails.html?productId=${product.id}'>
@@ -16,11 +17,16 @@ function renderWishlistProduct() {
           <p class="wishlist-desc">${product.desc}</p>
         </div>
       </a>
-      <button class="add-to-cart">Add to cart</button>
+      <button class="add-to-cart" data-product-id="${product.id}">Add to cart</button>
     </div>`;
   });
 
   document.querySelector(".js-wishlist-container").innerHTML = html;
+  document.querySelectorAll(".add-to-cart").forEach((button) => {
+    button.addEventListener("click", () => {
+      const { productId } = button.dataset;
+    });
+  });
 }
 renderHeader();
 renderWishlistProduct();
