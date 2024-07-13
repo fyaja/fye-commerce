@@ -1,4 +1,4 @@
-const cart = JSON.parse(localStorage.getItem("cart")) || [];
+export const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 export function addToCart(productId, quantity, size) {
   const quantityNumber = Number(quantity);
