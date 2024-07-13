@@ -2,7 +2,7 @@ export const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 export function addToCart(productId, quantity, size) {
   const quantityNumber = Number(quantity);
-  if (quantityNumber === 0) return;
+  if (!quantityNumber) return;
 
   let sameItem;
   cart.forEach((cartItem) => {

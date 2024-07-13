@@ -43,6 +43,21 @@ function renderCart() {
   });
 
   document.querySelector(".js-order-container").innerHTML = html;
+  const quantityInput = document.querySelector("#quantityInput");
+
+  document.querySelector("#subtractButton").addEventListener("click", () => {
+    let inputValue = Number(quantityInput.value);
+    if (inputValue > 1) {
+      inputValue--;
+      quantityInput.value = inputValue;
+    }
+  });
+
+  document.querySelector("#addButton").addEventListener("click", () => {
+    let inputValue = Number(quantityInput.value);
+    inputValue++;
+    quantityInput.value = inputValue;
+  });
 }
 
 renderHeader();
