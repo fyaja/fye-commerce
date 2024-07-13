@@ -1,4 +1,4 @@
-import { updateCartQuantity } from "../data/cart.js";
+import { totalCartQuantity } from "../data/cart.js";
 import { wishlist } from "../data/wishlist.js";
 
 export function renderHeader() {
@@ -13,7 +13,7 @@ export function renderHeader() {
         <input class="search-input" type="text" placeholder="search here..">
       </div>
       <a href="../checkout.html" class="products-cart">
-        <div class="cart-quantity">${updateCartQuantity()}</div>
+        <div class="cart-quantity">${totalCartQuantity()}</div>
         <i class="ri-shopping-bag-line ri-lg"></i>
       </a>
       <a href="../wishlist.html" class="products-wishlist">

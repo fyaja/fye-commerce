@@ -1,11 +1,18 @@
 import { renderHeader } from "./header.js";
-import { cart } from "../data/cart.js";
+import { cart, saveToStorage } from "../data/cart.js";
 import { getProducts } from "../data/products.js";
 import { moneyFormat } from "./utils/money.js";
+import { removeProductsSize } from "./utils/sizeChart.js";
+import {
+  updateHeartIcon,
+  updateHeartIconsEcommerce,
+} from "./utils/heartIcon.js";
+import { addToWishlist } from "../data/wishlist.js";
 
 function renderCart() {
   let html = ``;
-  cart.forEach((cartItem) => {
+  let productId;
+  cart.forEach((cartItem, index) => {
     const product = getProducts(cartItem.productId);
     html += `
     <div class="order">
@@ -18,20 +25,22 @@ function renderCart() {
             <p>Size: ${cartItem.size}</p>
           </div>
           <div class="quantity-controls">
-            <button class="quantity-button" id="subtractButton">
+            <button class="quantity-button subtract-button" data-index="${index}">
               <i class="ri-subtract-fill ri-lg"></i>
             </button>
-            <input type="number" id="quantityInput" class="quantity-input" value="${
-              cartItem.quantity
-            }" min="1">
-            <button class="quantity-button" id="addButton">
+            <input type="number" class="quantity-input" data-index="${index}" value="${
+      cartItem.quantity
+    }" min="1">
+            <button class="quantity-button add-button" data-index="${index}">
               <i class="ri-add-fill ri-lg"></i>
             </button>
           </div>
         </div>
       </div>
       <div class="order-right-buttons">
-        <button class="add-to-wishlist">
+        <button class="add-to-wishlist add-to-wishlist-${
+          product.id
+        }" data-product-id="${product.id}">
           <i class="ri-heart-line ri-xl"></i>
         </button>
         <button class="remove-product">
@@ -40,25 +49,71 @@ function renderCart() {
         </button>
       </div>
     </div>`;
+    productId = product.id;
   });
 
   document.querySelector(".js-order-container").innerHTML = html;
-  const quantityInput = document.querySelector("#quantityInput");
 
-  document.querySelector("#subtractButton").addEventListener("click", () => {
-    let inputValue = Number(quantityInput.value);
-    if (inputValue > 1) {
-      inputValue--;
+  document.querySelectorAll(".subtract-button").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const index = event.currentTarget.getAttribute("data-index");
+      const quantityInput = document.querySelector(
+        `.quantity-input[data-index="${index}"]`
+      );
+      let inputValue = Number(quantityInput.value);
+      if (inputValue > 1) {
+        inputValue--;
+        quantityInput.value = inputValue;
+        updateCartQuantity(index, inputValue);
+      }
+    });
+  });
+
+  document.querySelectorAll(".add-button").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const index = event.currentTarget.getAttribute("data-index");
+      const quantityInput = document.querySelector(
+        `.quantity-input[data-index="${index}"]`
+      );
+      let inputValue = Number(quantityInput.value);
+      inputValue++;
       quantityInput.value = inputValue;
-    }
+      updateCartQuantity(index, inputValue);
+    });
   });
 
-  document.querySelector("#addButton").addEventListener("click", () => {
-    let inputValue = Number(quantityInput.value);
-    inputValue++;
-    quantityInput.value = inputValue;
+  document.querySelectorAll(".quantity-input").forEach((input) => {
+    input.addEventListener("change", (event) => {
+      const index = event.currentTarget.getAttribute("data-index");
+      const inputValue = Number(event.currentTarget.value);
+      if (inputValue >= 1) {
+        updateCartQuantity(index, inputValue);
+      } else {
+        event.currentTarget.value = 1;
+        updateCartQuantity(index, 1);
+      }
+    });
   });
+
+  document.querySelectorAll(".add-to-wishlist").forEach((button) => {
+    button.addEventListener("click", () => {
+      const { productId } = button.dataset;
+      addToWishlist(productId);
+      updateHeartIcon(productId);
+      renderHeader();
+    });
+  });
+  if (html) {
+    updateHeartIconsEcommerce(productId);
+  }
+}
+
+function updateCartQuantity(index, quantity) {
+  cart[index].quantity = quantity;
+  saveToStorage();
+  renderHeader();
 }
 
 renderHeader();
 renderCart();
+removeProductsSize();

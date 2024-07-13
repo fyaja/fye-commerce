@@ -25,7 +25,7 @@ export function addToCart(productId, quantity, size) {
   saveToStorage();
 }
 
-export function updateCartQuantity() {
+export function totalCartQuantity() {
   let totalQuantity = 0;
   cart.forEach((cartItem) => {
     totalQuantity += cartItem.quantity;
@@ -33,6 +33,6 @@ export function updateCartQuantity() {
   return totalQuantity;
 }
 
-function saveToStorage() {
+export function saveToStorage() {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
