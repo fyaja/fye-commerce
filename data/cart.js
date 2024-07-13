@@ -1,4 +1,4 @@
-export const cart = JSON.parse(localStorage.getItem("cart")) || [];
+export let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 export function addToCart(productId, quantity, size) {
   const quantityNumber = Number(quantity);
@@ -31,6 +31,12 @@ export function totalCartQuantity() {
     totalQuantity += cartItem.quantity;
   });
   return totalQuantity;
+}
+
+export function removeProduct(productId, size) {
+  cart = cart.filter(
+    (cartItem) => cartItem.productId !== productId || cartItem.size !== size
+  );
 }
 
 export function saveToStorage() {

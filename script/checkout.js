@@ -1,5 +1,5 @@
 import { renderHeader } from "./header.js";
-import { cart, saveToStorage } from "../data/cart.js";
+import { cart, saveToStorage, removeProduct } from "../data/cart.js";
 import { getProducts } from "../data/products.js";
 import { moneyFormat } from "./utils/money.js";
 import { removeProductsSize } from "./utils/sizeChart.js";
@@ -43,7 +43,9 @@ function renderCart() {
         }" data-product-id="${product.id}">
           <i class="ri-heart-line ri-xl"></i>
         </button>
-        <button class="remove-product">
+        <button class="remove-product" data-product-id="${
+          cartItem.productId
+        }" data-size="${cartItem.size}">
           <i class="ri-delete-bin-5-line ri-xl"></i>
           <span>Remove item</span>
         </button>
@@ -103,9 +105,23 @@ function renderCart() {
       renderHeader();
     });
   });
+
   if (html) {
     updateHeartIconsEcommerce(productId);
   }
+
+  document.querySelectorAll(".remove-product").forEach((button) => {
+    button.addEventListener("click", () => {
+      const { productId, size } = button.dataset;
+      removeProduct(productId, size);
+      saveToStorage();
+      renderHeader();
+
+      setTimeout(() => {
+        renderCart();
+      }, 200);
+    });
+  });
 }
 
 function updateCartQuantity(index, quantity) {
