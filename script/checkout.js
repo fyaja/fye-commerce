@@ -67,6 +67,7 @@ function renderCart() {
         inputValue--;
         quantityInput.value = inputValue;
         updateCartQuantity(index, inputValue);
+        renderOrderSummary();
       }
     });
   });
@@ -81,6 +82,7 @@ function renderCart() {
       inputValue++;
       quantityInput.value = inputValue;
       updateCartQuantity(index, inputValue);
+      renderOrderSummary();
     });
   });
 
@@ -90,9 +92,11 @@ function renderCart() {
       const inputValue = Number(event.currentTarget.value);
       if (inputValue >= 1) {
         updateCartQuantity(index, inputValue);
+        renderOrderSummary();
       } else {
         event.currentTarget.value = 1;
         updateCartQuantity(index, 1);
+        renderOrderSummary();
       }
     });
   });
@@ -116,12 +120,42 @@ function renderCart() {
       removeProduct(productId, size);
       saveToStorage();
       renderHeader();
+      renderOrderSummary();
 
       setTimeout(() => {
         renderCart();
       }, 200);
     });
   });
+}
+
+function renderOrderSummary() {
+  let subtotal = 0;
+  cart.forEach((cartItem) => {
+    const product = getProducts(cartItem.productId);
+    subtotal += cartItem.quantity * product.price;
+  });
+  const tax = subtotal * 0.1;
+  const total = subtotal + tax;
+
+  const html = `
+  <h2>Order Summary</h2>
+    <div class="price-div">
+      <p class="text">Subtotal</p>
+      <p class="price">${moneyFormat(subtotal)}</p>
+    </div>
+    <div class="price-div">
+      <p class="text">Tax (10%)</p>
+      <p class="price">${moneyFormat(tax)}</p>
+    </div>
+    <div class="price-div">
+      <p class="text">Total</p>
+      <p class="price">${moneyFormat(total)}</p>
+    </div>
+    <button class="checkout-btn">Checkout</button>
+  </div>`;
+
+  document.querySelector(".js-order-summary").innerHTML = html;
 }
 
 function updateCartQuantity(index, quantity) {
@@ -132,4 +166,5 @@ function updateCartQuantity(index, quantity) {
 
 renderHeader();
 renderCart();
+renderOrderSummary();
 removeProductsSize();
