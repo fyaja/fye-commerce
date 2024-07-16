@@ -18,7 +18,7 @@ export function updateHeartIcon(productId) {
   }
 }
 
-export function updateHeartIconsProductDetails(productId) {
+export function updateHeartIconOneItem(productId) {
   wishlist.forEach((item) => {
     if (item.productId === productId) {
       const heartElement = document.querySelector(
@@ -31,7 +31,7 @@ export function updateHeartIconsProductDetails(productId) {
   console.log(wishlist);
 }
 
-export function updateHeartIconsEcommerce() {
+export function updateHeartIconAllItem() {
   wishlist.forEach((item) => {
     if (item.productId) {
       const heartElement = document.querySelector(

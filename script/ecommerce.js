@@ -1,9 +1,6 @@
 import { products } from "../data/products.js";
 import { moneyFormat } from "./utils/money.js";
-import {
-  updateHeartIcon,
-  updateHeartIconsEcommerce,
-} from "./utils/heartIcon.js";
+import { updateHeartIcon, updateHeartIconAllItem } from "./utils/heartIcon.js";
 import { addToWishlist } from "../data/wishlist.js";
 import { renderHeader } from "./header.js";
 import { removeProductsSize } from "./utils/sizeChart.js";
@@ -42,7 +39,7 @@ function renderProducts() {
       renderHeader();
     });
   });
-  updateHeartIconsEcommerce();
+  updateHeartIconAllItem();
 }
 
 removeProductsSize();

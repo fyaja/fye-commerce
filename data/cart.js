@@ -37,6 +37,12 @@ export function removeProduct(productId, size) {
   cart = cart.filter(
     (cartItem) => cartItem.productId !== productId || cartItem.size !== size
   );
+  saveToStorage();
+}
+
+export function updateCartQuantity(index, quantity) {
+  cart[index].quantity = quantity;
+  saveToStorage();
 }
 
 export function saveToStorage() {

@@ -1,10 +1,7 @@
 import { products } from "../data/products.js";
 import { addToCart } from "../data/cart.js";
 import { moneyFormat } from "./utils/money.js";
-import {
-  updateHeartIcon,
-  updateHeartIconsProductDetails,
-} from "./utils/heartIcon.js";
+import { updateHeartIcon, updateHeartIconOneItem } from "./utils/heartIcon.js";
 import { addToWishlist } from "../data/wishlist.js";
 import { renderHeader } from "./header.js";
 import { pushSize } from "./utils/sizeChart.js";
@@ -94,7 +91,7 @@ function renderProductDetails() {
       renderHeader();
     });
   });
-  updateHeartIconsProductDetails(productId);
+  updateHeartIconOneItem(productId);
 
   document
     .querySelectorAll(".product-button-bottom button")
