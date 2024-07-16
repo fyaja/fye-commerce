@@ -4,27 +4,27 @@
     "name": "Black T-Shirt",
     "price": 125000,
     "image": "images/products-image/kaos item.jpg",
-    "desc": "ya kaos item aja sih tapi bagus loh.."
+    "desc": "Simple and stylish black T-shirt, perfect for any casual occasion."
   },
   {
     "id": "2",
-    "name": "Baju 2",
-    "price": 150000,
-    "image": "images/products-image/kaos item.jpg",
-    "desc": "ya kaos item aja sih tapi bagus loh.."
+    "name": "Racing Sweatshirt",
+    "price": 325000,
+    "image": "images/products-image/racing sweatshirt.jpg",
+    "desc": "High-quality racing sweatshirt, ideal for motorsport enthusiasts."
   },
   {
     "id": "3",
-    "name": "Baju 3",
-    "price": 175000,
-    "image": "images/products-image/kaos item.jpg",
-    "desc": "ya kaos item aja sih tapi bagus loh.."
+    "name": "Polo Shirt",
+    "price": 275000,
+    "image": "images/products-image/polo shirt.jpg",
+    "desc": "Elegant Polo shirt that keeps you looking sharp and neat."
   },
   {
     "id": "4",
-    "name": "Baju 4",
-    "price": 100000,
-    "image": "images/products-image/kaos item.jpg",
-    "desc": "ya kaos item aja sih tapi bagus loh.."
+    "name": "Double Layer Tee",
+    "price": 250000,
+    "image": "images/products-image/double layer tee.jpg",
+    "desc": "Double layer tee to keep you warm in cooler weather."
   }
 ]

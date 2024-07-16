@@ -1,5 +1,5 @@
 footer{
-  padding-block: 1rem;
+  padding-block: 2rem;
   background-color: var(--secondary-color);
   color: var(--primary-color);
 }
@@ -7,7 +7,7 @@ footer{
 .footer{
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 3rem;
 }
 
 .footer-container-top{
@@ -45,17 +45,20 @@ footer{
 }
 
 .copyrights{
-  padding: 1rem;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  cursor: pointer;
+  opacity: 0.3;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
 }
 
+.copyrights:hover{
+  opacity: 1;
+}
+
 .copyrights p{
-  font-weight: 600;
+  font-weight: 500;
 }
 
 @media screen and (max-width: 768px) {
