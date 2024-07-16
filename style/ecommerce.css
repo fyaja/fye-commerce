@@ -1,6 +1,6 @@
 /* hero section */
 section{
-  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .heros{
@@ -49,7 +49,6 @@ section{
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-bottom: 1rem;
 }
 
 .products .products-top{
