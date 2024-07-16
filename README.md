@@ -1,8 +1,8 @@
-# FYEcommerce
+# fye-commerce
 
 ## Overview
 
-FYEcommerce is a simple e-commerce website focused on fashion trends, offering a collection of chic dresses and trendy accessories. This project uses HTML, CSS, and JavaScript to provide a basic yet functional online shopping experience, including features such as a shopping cart and wishlist.
+fyecommerce is a simple e-commerce website focused on fashion trends, offering a collection of chic dresses and trendy accessories. This project uses HTML, CSS, and JavaScript to provide a basic yet functional online shopping experience, including features such as a shopping cart and wishlist.
 
 ## Features
 
