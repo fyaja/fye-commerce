@@ -45,15 +45,6 @@ export async function fetchProducts() {
   }
 }
 
-export async function loadPage(renderPage) {
-  try {
-    await fetchProducts();
-    renderPage();
-  } catch (error) {
-    console.error("Error loading page:", error);
-  }
-}
-
 export function getProducts(productId) {
   let sameProduct;
   products.forEach((product) => {

@@ -1,11 +1,21 @@
 import { addToCart } from "../data/cart.js";
-import { getProducts, loadPage } from "../data/products.js";
+import { getProducts, fetchProducts } from "../data/products.js";
 import { wishlist } from "../data/wishlist.js";
 import { renderHeader } from "./header.js";
 import { getSize, removeProductsSize } from "./utils/sizeChart.js";
 import { moneyFormat } from "./utils/money.js";
 
-loadPage(renderWishlistProduct);
+async function loadPage() {
+  try {
+    await fetchProducts();
+    renderWishlistProduct();
+    renderHeader();
+  } catch (error) {
+    console.error("Error loading page:", error);
+  }
+}
+
+loadPage();
 
 function renderWishlistProduct() {
   let html = ``;
@@ -41,4 +51,3 @@ function renderWishlistProduct() {
     });
   });
 }
-renderHeader();

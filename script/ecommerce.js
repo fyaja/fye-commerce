@@ -1,11 +1,22 @@
-import { products, loadPage } from "../data/products.js";
+import { products, fetchProducts } from "../data/products.js";
 import { moneyFormat } from "./utils/money.js";
 import { updateHeartIcon, updateHeartIconAllItems } from "./utils/heartIcon.js";
 import { addToWishlist } from "../data/wishlist.js";
 import { renderHeader } from "./header.js";
 import { removeProductsSize } from "./utils/sizeChart.js";
 
-loadPage(renderProducts);
+async function loadPage() {
+  try {
+    await fetchProducts();
+    renderProducts();
+    removeProductsSize();
+    renderHeader();
+  } catch (error) {
+    console.error("Error loading page:", error);
+  }
+}
+
+loadPage();
 
 function renderProducts() {
   let html = "";
@@ -43,6 +54,3 @@ function renderProducts() {
   });
   updateHeartIconAllItems();
 }
-
-removeProductsSize();
-renderHeader();
