@@ -1,45 +1,40 @@
 import { wishlist } from "../../data/wishlist.js";
 
 export function updateHeartIcon(productId) {
-  const heartElement = document.querySelector(
-    `.add-to-wishlist-${productId} i`
-  );
+  document
+    .querySelectorAll(`.add-to-wishlist-${productId} i`)
+    .forEach((heartElement) => {
+      const isProductInWishlist = wishlist.some(
+        (item) => item.productId === productId
+      );
 
-  const isProductInWishlist = wishlist.some(
-    (item) => item.productId === productId
-  );
+      if (heartElement) {
+        heartElement.classList.toggle("ri-heart-fill", isProductInWishlist);
+        heartElement.classList.toggle("ri-heart-line", !isProductInWishlist);
+      }
+    });
+}
 
-  if (!isProductInWishlist) {
-    heartElement.classList.remove("ri-heart-fill");
-    heartElement.classList.add("ri-heart-line");
-  } else {
-    heartElement.classList.remove("ri-heart-line");
-    heartElement.classList.add("ri-heart-fill");
-  }
+function updateHeartIconForItem(productId) {
+  document
+    .querySelectorAll(`.add-to-wishlist-${productId} i`)
+    .forEach((heartElement) => {
+      if (heartElement) {
+        heartElement.classList.remove("ri-heart-line");
+        heartElement.classList.add("ri-heart-fill");
+      }
+    });
 }
 
 export function updateHeartIconOneItem(productId) {
-  wishlist.forEach((item) => {
-    if (item.productId === productId) {
-      const heartElement = document.querySelector(
-        `.add-to-wishlist-${item.productId} i`
-      );
-      heartElement.classList.remove("ri-heart-line");
-      heartElement.classList.add("ri-heart-fill");
-    }
-  });
+  const item = wishlist.find((item) => item.productId === productId);
+  if (item) {
+    updateHeartIconForItem(item.productId);
+  }
   console.log(wishlist);
 }
 
-export function updateHeartIconAllItem() {
-  wishlist.forEach((item) => {
-    if (item.productId) {
-      const heartElement = document.querySelector(
-        `.add-to-wishlist-${item.productId} i`
-      );
-      heartElement.classList.remove("ri-heart-line");
-      heartElement.classList.add("ri-heart-fill");
-    }
-  });
+export function updateHeartIconAllItems() {
+  wishlist.forEach((item) => updateHeartIconForItem(item.productId));
   console.log(wishlist);
 }

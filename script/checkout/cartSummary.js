@@ -7,7 +7,10 @@ import {
 } from "../../data/cart.js";
 import { getProducts } from "../../data/products.js";
 import { moneyFormat } from "../utils/money.js";
-import { updateHeartIcon, updateHeartIconAllItem } from "../utils/heartIcon.js";
+import {
+  updateHeartIcon,
+  updateHeartIconAllItems,
+} from "../utils/heartIcon.js";
 import { addToWishlist } from "../../data/wishlist.js";
 import { renderPriceSummary } from "./priceSummary.js";
 
@@ -117,7 +120,7 @@ export function renderCartSummary() {
   });
 
   if (html) {
-    updateHeartIconAllItem(productId);
+    updateHeartIconAllItems(productId);
   }
 
   document.querySelectorAll(".remove-product").forEach((button) => {
@@ -128,7 +131,7 @@ export function renderCartSummary() {
       renderPriceSummary();
 
       setTimeout(() => {
-        renderCart();
+        renderCartSummary();
       }, 200);
     });
   });
