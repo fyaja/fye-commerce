@@ -1,10 +1,5 @@
 import { renderHeader } from "../header.js";
-import {
-  cart,
-  updateCartQuantity,
-  removeProduct,
-  saveToStorage,
-} from "../../data/cart.js";
+import { cart, updateCartQuantity, removeProduct } from "../../data/cart.js";
 import { getProducts } from "../../data/products.js";
 import { moneyFormat } from "../utils/money.js";
 import {
@@ -72,7 +67,6 @@ export function renderCartSummary() {
         inputValue--;
         quantityInput.value = inputValue;
         updateCartQuantity(index, inputValue);
-        saveToStorage();
         renderPriceSummary();
       }
     });
@@ -88,7 +82,6 @@ export function renderCartSummary() {
       inputValue++;
       quantityInput.value = inputValue;
       updateCartQuantity(index, inputValue);
-      saveToStorage();
       renderPriceSummary();
     });
   });
@@ -99,12 +92,10 @@ export function renderCartSummary() {
       const inputValue = Number(event.currentTarget.value);
       if (inputValue >= 1) {
         updateCartQuantity(index, inputValue);
-        saveToStorage();
         renderPriceSummary();
       } else {
         event.currentTarget.value = 1;
         updateCartQuantity(index, 1);
-        saveToStorage();
         renderPriceSummary();
       }
     });
@@ -126,11 +117,10 @@ export function renderCartSummary() {
   document.querySelectorAll(".remove-product").forEach((button) => {
     button.addEventListener("click", () => {
       const { productId, size } = button.dataset;
-      removeProduct(productId, size);
-      renderHeader();
-      renderPriceSummary();
-
       setTimeout(() => {
+        removeProduct(productId, size);
+        renderHeader();
+        renderPriceSummary();
         renderCartSummary();
       }, 200);
     });

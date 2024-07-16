@@ -1,10 +1,12 @@
-import { products } from "../data/products.js";
+import { products, loadPage } from "../data/products.js";
 import { addToCart } from "../data/cart.js";
 import { moneyFormat } from "./utils/money.js";
 import { updateHeartIcon, updateHeartIconOneItem } from "./utils/heartIcon.js";
 import { addToWishlist } from "../data/wishlist.js";
 import { renderHeader } from "./header.js";
 import { pushSize } from "./utils/sizeChart.js";
+
+loadPage(renderProductDetails);
 
 function renderProductDetails() {
   const url = new URL(window.location.href);
@@ -132,5 +134,4 @@ function renderProductDetails() {
   });
 }
 
-renderProductDetails();
 renderHeader();

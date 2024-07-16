@@ -1,9 +1,11 @@
 import { addToCart } from "../data/cart.js";
-import { getProducts } from "../data/products.js";
+import { getProducts, loadPage } from "../data/products.js";
 import { wishlist } from "../data/wishlist.js";
 import { renderHeader } from "./header.js";
 import { getSize, removeProductsSize } from "./utils/sizeChart.js";
 import { moneyFormat } from "./utils/money.js";
+
+loadPage(renderWishlistProduct);
 
 function renderWishlistProduct() {
   let html = ``;
@@ -40,4 +42,3 @@ function renderWishlistProduct() {
   });
 }
 renderHeader();
-renderWishlistProduct();

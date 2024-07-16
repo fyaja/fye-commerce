@@ -1,9 +1,11 @@
-import { products } from "../data/products.js";
+import { products, loadPage } from "../data/products.js";
 import { moneyFormat } from "./utils/money.js";
 import { updateHeartIcon, updateHeartIconAllItems } from "./utils/heartIcon.js";
 import { addToWishlist } from "../data/wishlist.js";
 import { renderHeader } from "./header.js";
 import { removeProductsSize } from "./utils/sizeChart.js";
+
+loadPage(renderProducts);
 
 function renderProducts() {
   let html = "";
@@ -43,5 +45,4 @@ function renderProducts() {
 }
 
 removeProductsSize();
-renderProducts();
 renderHeader();
