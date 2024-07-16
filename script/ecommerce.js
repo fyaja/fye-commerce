@@ -5,6 +5,15 @@ import { addToWishlist } from "../data/wishlist.js";
 import { renderHeader } from "./header.js";
 import { removeProductsSize } from "./utils/sizeChart.js";
 
+import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
+const swiper = new Swiper(".swiper", {
+  autoplay: {
+    delay: 3000,
+  },
+  loop: true,
+  speed: 700,
+});
+
 async function loadPage() {
   try {
     await fetchProducts();
