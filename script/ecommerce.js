@@ -17,9 +17,9 @@ const swiper = new Swiper(".swiper", {
 async function loadPage() {
   try {
     await fetchProducts();
-    renderProducts();
     removeProductsSize();
     renderHeader();
+    renderProducts();
   } catch (error) {
     console.error("Error loading page:", error);
   }
@@ -28,6 +28,32 @@ async function loadPage() {
 loadPage();
 
 function renderProducts() {
+  document.querySelector(".search-input").addEventListener("input", () => {
+    const searchInput = document
+      .querySelector(".search-input")
+      .value.toLowerCase();
+    const filteredProducts = products.filter((product) =>
+      product.name.toLowerCase().includes(searchInput)
+    );
+    displayProducts(filteredProducts);
+  });
+
+  document.querySelector(".products-filter").addEventListener("change", () => {
+    const filterValue = document.querySelector(".products-filter").value;
+    let filteredProducts;
+    if (filterValue === "high") {
+      filteredProducts = [...products].sort((a, b) => b.price - a.price);
+    } else if (filterValue === "low") {
+      filteredProducts = [...products].sort((a, b) => a.price - b.price);
+    } else {
+      filteredProducts = products;
+    }
+    displayProducts(filteredProducts);
+  });
+  displayProducts(products);
+}
+
+function displayProducts(products) {
   let html = "";
   products.forEach((product) => {
     html += `
