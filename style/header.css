@@ -22,6 +22,10 @@ header{
   margin-right: 10px;
 }
 
+.logo{
+  display: flex;
+}
+
 .header-right a{
   color: var(--primary-color);
   text-decoration: none;
@@ -51,7 +55,7 @@ header{
 
 .header-right .search-div i{
   right: 10px;
-  top: 3px;
+  top: 8px;
   position: absolute;
   color: var(--secondary-color);
 }
@@ -62,7 +66,7 @@ header{
   border: none;
   font-size: 0.875rem;
   border-radius: 20px;
-  padding: 0.2rem 2rem 0.2rem 1rem;
+  padding: 0.5rem 2rem 0.5rem 1rem;
 }
 
 .header-right .search-div input:focus{
